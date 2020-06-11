@@ -13,191 +13,109 @@ Repositório do curso de GIT (Alura)
 
 # Minhas anotações do curso
 
-git --version <- versão do GIT
+	git --version <- versão do GIT
+	git init <- indica que aquele será um diretório monitorado
+	git status <- garante que aquele é um diretório monitarado e exibe as informações
+	git add <nome_arquivo> <-indica que o arquivo vai ser monitorado
+	git rm <nome_arquivo> <- remove o arquivo do monitoramento
+	git commit -m "Criando um commit"
+	git config --local user.name "Seu nome aqui" //--global
+	git config --local user.email "seu@email.aqui" //--global
+	HEAD: Estado atual do nosso código, ou seja, onde o Git nos colocou
+	Working tree: Local onde os arquivos realmente estão sendo armazenados e editados
+	index: Local onde o Git armazena o que será commitado, ou seja, o local entre a working tree e o repositório Git em si.
+	git log <- histórico
+	git log --oneline <- única linha
+	git log -p <- mais informações
+	git log --pretty="format:%h %s" <- formatando a saida //https://devhints.io/git-log
+	git log --help
+	git log -n 2 <- mostra os 2 últimos commits
+	.gitignore <- arquivo onde constam arquivos que seram ignorados pelo GIT, esse arquivo precisa ser monitorado e commitado
+	git init --bare <- repositório puro, será o servidor
+	git remote add local <caminho_servidor> <- local é o nome que definimos nosso servidor remoto
+	git remote -v <-exibe o endereço dos servidores remotos
+	git clone <caminho_servidor> <nome_pasta_que_sera_criada> 
+	git push local master <- envia as alterações do local para a branch (master)
+	git remote rename origin local <- renomeando um servidor remoto
+	git pull local master <- baixa informações do servidor remoto local da branch master
+	https://github.com/
+	git remote add origin git@github.com:CViniviusSDias/alura-git.git <- quando já possuímos uma pasta com arquivos
+	git push -u origin master <- -u define que sempre será enviado da origin
+	git branch <nome_da_branch> <- cria um novo ramo
+	git checkout <nome_da_branch> <- indica a branch que você está trabalhando 
+	git checkout -b <nome_da_branch> <- cria a branch e já vai pra ela
+	git branch <- visualiza as branchs
+	VIM: sair com dois pontos X (:X)
+	git rebase <nome_da_branch> <- atualiza a linha do tempo
+	rebase x merge <- o rebase adiciona todos commits realizados, o merge unifica tudo em um único commit
+	git rebase --continue <- após resolver os conflitos 
+	git rebase --abort <- caso queira abortar o rebase
+	git checkout -- <arquivo> <- reverte antes de dar um add
+	git reset HEAD <arquivo> <- reverte após dar o add
+	git revert <HASH_DO_COMMIT> <- reverter aopos dar o 
+	git merge master <- realiza o merge na master
+	git stash <- cria um temporária das suas modificações
+	git stash list <- lista as stashs
+	git stash apply <numero_da_stash> <- aplica o que foi guardado, precisa dar add e commitar normalmente
+	git stash drop <numero_da_stash> <- remove a stash
+	git stash pop <numero_da_stash> <- aplica a stash e remove ela
+	git stash clear <- limpa todas stashs
+	git reset --hard <hash_do_commit> <- restaura um push
+	git stash show <- lista os arquivos de um stash
+	https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
+	git diff <hash_commit>..<hash_commit>
+	git diff <- diferença entre oq está na master e o que eu ainda não commitei
+	git tag -a v0.1.0 -m "Lançando a primeira versão (BETA) da aplicação de cursos"
+	git tag <- exibe as tags
+	git push origin master / git push origin v0.1.0
+	https://www.gitkraken.com/?utm_expid=.W2nHbF0ARIqaOuS7QxW-pA.0&utm_referrer=
+	https://opensource.org/
+	http://slides.com/daianealvesrj/software-livre-para-empreendedores#/
+	repositório cópia é fork
+	git remote add origin <link_fork>
+	git pull origin master
+
+	Esta é a forma mais simples: apagaremos as credenciais do GitHub acessando "Painel de Controle > Contas de Usuário > Gerenciador 	de Credenciais > Credenciais do Windows". Dentre as Credenciais Genéricas, clicaremos na seta ao lado de git:https://github.com 	para que a informação seja expandida, e em "Remover". Assim, se tentarmos refazer o push, o GitHub nos solicitará os dados para 	login.
+
+	New pull request <- requisitar para enviar informações  
+	Merge pull request <- confirmar os pull requests solicitados
+
+	git rebase -i HEAD~3 <- indica que eh para dar o rebase dos 3 últimos commits
+	git rebase -i <hash_commit> 
+	git rebase -i <- todos commits ainda não enviados
+	Nesse ponto os commits estarão com a palavra "pick" na frente, trocar o "pick" por "s" nos commits que forem para realizar o 		rebase 
+	VIM: salvar : + x
+	VIM: excluir palavra: dw
+	https://bitbucket.org/
+	https://about.gitlab.com/
+	git config --list <- lista configurações do 
+	git checkout master <- posicionar na master
+	git cherry-pick <hash_commit> <- trazer para a master um determinado commit que ainda não foi dado merge
+	git show <hash_commit> <- indica de qual commit você quer ver as alterações
+	git bisect start <- inicia a busca da parte do git
+	git bisect bad HEAD <- indica onde irá começar
+	git bisect good <hash_commit> <- indica qual era o commit bom
+	git bisect bad <- ir para o próximo commit
+	git bisect good <- indica que esse é o commit bom
+	git blame <arquivo> <- mostra quem foi que inclui cada linha do código e em qual commit
+	git checkout <hash_branch> <- posiciona na master
+	git log --graph <- mostra a linha do tempo
+	git branch -d <nome_da_branch> <- deleta uma branch
+	git branch -D <nome_da_branch> <- deleta uma branch com commits a frente da master
+	develop <- homologação
+	master   <- produção
+	feature <- melhorias (develop)
+	hotfix  <- correções (master)
+	git merge --no-ff <nome_da_branch> <- gerar só um commit do merge
+	cd git .
+	cd hooks/
+	vi pre_commit / #!/bin/sh / echo "Você está prestes a commitar. :-)"
+	vi post-receive / #!/bin/sh / git --git-dir="C:\Users\wilbe\Documents\gitS" --work-tree="C:\Users\wilbe\Documents\web" checkout 	-f
+	git checkout -b local-master <- criar uma branch local
+	git checkout -b novaBranchDaMaterRemota origin/master <- criar uma branch a partir da master novaBranchDaMaterRemota
+	git pull <- baixar atualizações da master
+	https://medium.com/better-programming/how-to-automatically-deploy-from-github-to-server-using-webhook-79f837dcc4f4
 
-git init <- indica que aquele será um diretório monitorado
-
-git status <- garante que aquele é um diretório monitarado e exibe as informações
-
-git add <nome_arquivo> <-indica que o arquivo vai ser monitorado
-
-git rm <nome_arquivo> <- remove o arquivo do monitoramento
-
-git commit -m "Criando um commit"
-
-git config --local user.name "Seu nome aqui" //--global
-
-git config --local user.email "seu@email.aqui" //--global
-
-HEAD: Estado atual do nosso código, ou seja, onde o Git nos colocou
-
-Working tree: Local onde os arquivos realmente estão sendo armazenados e editados
-
-index: Local onde o Git armazena o que será commitado, ou seja, o local entre a working tree e o repositório Git em si.
-
-git log <- histórico
-
-git log --oneline <- única linha
-
-git log -p <- mais informações
-
-git log --pretty="format:%h %s" <- formatando a saida //https://devhints.io/git-log
-
-git log --help
-
-git log -n 2 <- mostra os 2 últimos commits
-
-.gitignore <- arquivo onde constam arquivos que seram ignorados pelo GIT, esse arquivo precisa ser monitorado e commitado
-
-git init --bare <- repositório puro, será o servidor
-
-git remote add local <caminho_servidor> <- local é o nome que definimos nosso servidor remoto
-
-git remote -v <-exibe o endereço dos servidores remotos
-
-git clone <caminho_servidor> <nome_pasta_que_sera_criada> 
-
-git push local master <- envia as alterações do local para a branch (master)
-
-git remote rename origin local <- renomeando um servidor remoto
-
-git pull local master <- baixa informações do servidor remoto local da branch master
-
-https://github.com/
-
-git remote add origin git@github.com:CViniviusSDias/alura-git.git <- quando já possuímos uma pasta com arquivos
-
-git push -u origin master <- -u define que sempre será enviado da origin
-
-git branch <nome_da_branch> <- cria um novo ramo
-
-git checkout <nome_da_branch> <- indica a branch que você está trabalhando 
-
-git checkout -b <nome_da_branch> <- cria a branch e já vai pra ela
-
-git branch <- visualiza as branchs
-
-VIM: sair com dois pontos X (:X)
-
-git rebase <nome_da_branch> <- atualiza a linha do tempo
-
-rebase x merge <- o rebase adiciona todos commits realizados, o merge unifica tudo em um único commit
-
-git rebase --continue <- após resolver os conflitos 
-
-git rebase --abort <- caso queira abortar o rebase
-
-git checkout -- <arquivo> <- reverte antes de dar um add
-
-git reset HEAD <arquivo> <- reverte após dar o add
-
-git revert <HASH_DO_COMMIT> <- reverter aopos dar o 
-
-git merge master <- realiza o merge na master
-
-git stash <- cria um temporária das suas modificações
-
-git stash list <- lista as stashs
-
-git stash apply <numero_da_stash> <- aplica o que foi guardado, precisa dar add e commitar normalmente
-
-git stash drop <numero_da_stash> <- remove a stash
-
-git stash pop <numero_da_stash> <- aplica a stash e remove ela
-
-git stash clear <- limpa todas stashs
-
-git reset --hard <hash_do_commit> <- restaura um push
-
-git stash show <- lista os arquivos de um stash
-
-https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud
-
-git diff <hash_commit>..<hash_commit>
-
-git diff <- diferença entre oq está na master e o que eu ainda não commitei
-
-git tag -a v0.1.0 -m "Lançando a primeira versão (BETA) da aplicação de cursos"
-
-git tag <- exibe as tags
-
-git push origin master / git push origin v0.1.0
-
-https://www.gitkraken.com/?utm_expid=.W2nHbF0ARIqaOuS7QxW-pA.0&utm_referrer=
-https://opensource.org/
-http://slides.com/daianealvesrj/software-livre-para-empreendedores#/
-repositório cópia é fork
-git remote add origin <link_fork>
-git pull origin master
-
-Esta é a forma mais simples: apagaremos as credenciais do GitHub acessando "Painel de Controle > Contas de Usuário > Gerenciador de Credenciais > Credenciais do Windows". Dentre as Credenciais Genéricas, clicaremos na seta ao lado de git:https://github.com para que a informação seja expandida, e em "Remover". Assim, se tentarmos refazer o push, o GitHub nos solicitará os dados para login.
-
-New pull request <- requisitar para enviar informações  
-Merge pull request <- confirmar os pull requests solicitados
-
-git rebase -i HEAD~3 <- indica que eh para dar o rebase dos 3 últimos commits
-git rebase -i <hash_commit> 
-git rebase -i <- todos commits ainda não enviados
-Nesse ponto os commits estarão com a palavra "pick" na frente, trocar o "pick" por "s" nos commits que forem para realizar o rebase 
-VIM: salvar : + x
-VIM: excluir palavra: dw
-
-https://bitbucket.org/
-https://about.gitlab.com/
-
-git config --list <- lista configurações do 
-
-git checkout master <- posicionar na master
-
-git cherry-pick <hash_commit> <- trazer para a master um determinado commit que ainda não foi dado merge
-
-git show <hash_commit> <- indica de qual commit você quer ver as alterações
-
-git bisect start <- inicia a busca da parte do git
-
-git bisect bad HEAD <- indica onde irá começar
-
-git bisect good <hash_commit> <- indica qual era o commit bom
-
-git bisect bad <- ir para o próximo commit
-
-git bisect good <- indica que esse é o commit bom
-
-git blame <arquivo> <- mostra quem foi que inclui cada linha do código e em qual commit
-
-git checkout <hash_branch> <- posiciona na master
-
-git log --graph <- mostra a linha do tempo
-
-git branch -d <nome_da_branch> <- deleta uma branch
-
-git branch -D <nome_da_branch> <- deleta uma branch com commits a frente da master
-
-develop <- homologação
-
-master   <- produção
-
-feature <- melhorias (develop)
-
-hotfix  <- correções (master)
-
-git merge --no-ff <nome_da_branch> <- gerar só um commit do merge
-
-cd git .
-
-cd hooks/
-
-vi pre_commit / #!/bin/sh / echo "Você está prestes a commitar. :-)"
-
-vi post-receive / #!/bin/sh / git --git-dir="C:\Users\wilbe\Documents\gitS" --work-tree="C:\Users\wilbe\Documents\web" checkout -f
-
-git checkout -b local-master <- criar uma branch local
-
-git checkout -b novaBranchDaMaterRemota origin/master <- criar uma branch a partir da master novaBranchDaMaterRemota
-
-git pull <- baixar atualizações da master
-
-https://medium.com/better-programming/how-to-automatically-deploy-from-github-to-server-using-webhook-79f837dcc4f4
 
 #Abaixo Lista de Comandos úteis do GIT -> retirado do https://gist.github.com/leocomelli/2545add34e4fec21ec16
 
